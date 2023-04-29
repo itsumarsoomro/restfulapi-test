@@ -1,0 +1,21 @@
+{
+  "name": "module2_exercise1",
+  "version": "1.0.0",
+  "description": "Serving two pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server.js"
+  },
+  "keywords": [
+    "example",
+    "data",
+    "selfie"
+  ],
+  "author": "Daniel Shiffman",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nedb": "^1.8.0"
+  }
+}

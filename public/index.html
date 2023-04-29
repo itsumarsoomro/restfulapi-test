@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <p>Longitide: <span id="long"></span>&deg;</p>
+    <p>Latitude: <span id="lat"></span>&deg;</p>
+
+    <input type="text" id="input" placeholder="Enter your name" /> <br />
+    <br />
+    <button id="sendData">Send</button>
+
+    <script>
+      let lat, lon;
+      const button = document.getElementById("sendData");
+      button.addEventListener("click", async (event) => {
+        const Input = document.getElementById("input").value;
+        const data = { lat, lon, Input };
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+        const response = await fetch("/api", options);
+        const json = await response.json();
+        console.log(json);
+      });
+
+      if ("geolocation" in navigator) {
+        console.log("geolocation available");
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+          document.getElementById("lat").textContent = lat;
+          document.getElementById("long").textContent = lon;
+        });
+      } else {
+        alert("geolocation not available");
+      }
+    </script>
+
+    <!-- <script>
+      document.getElementById("sendData").addEventListener("click", () => {
+        console.log("working");
+        if ("geolocation" in navigator) {
+          /* geolocation is available */
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            const long = position.coords.longitude;
+            const lat = position.coords.latitude;
+            const Input = document.getElementById("input").value;
+         
+
+            document.getElementById("long").textContent = long;
+            document.getElementById("lat").textContent = lat;
+            // console.log(position.coords.longitude);
+            // console.log("API Status: succeded");
+
+            const data = { long, lat, Input };
+
+            const options = {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            };
+
+            const resonse = await fetch("/api", options);
+            const dataa = await resonse.json();
+            console.log(dataa);
+          });
+        } else {
+          /* geolocation IS NOT available */
+          alert("Geolocation not available right now");
+        }
+      });
+    </script> -->
+  </body>
+</html>

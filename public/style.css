@@ -1,0 +1,27 @@
+* {
+       background-color: black;
+       color: white;
+      
+     }
+
+#sendData{
+  color: black;
+  background-color: antiquewhite;
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: 0px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 1s all ;
+}
+#sendData:hover{
+  /* border: 1px dodgerblue solid; */
+  background-color: darkcyan;
+  color: white;
+}
+#input{
+  background-color: white;
+  padding: 6px 20px;
+  border-radius: 12px;
+  color: black;
+}
